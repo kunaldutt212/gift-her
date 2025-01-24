@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Untitled</title>
+  
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gift for You</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: linear-gradient(to bottom right, #ff9a9e, #fad0c4);
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            margin: 20px auto;
+            max-width: 600px;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .hidden {
+            display: none;
+        }
+        button {
+            background-color: #ff6f61;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #e65c50;
+        }
+        .flower {
+            margin-top: 20px;
+            animation: bloom 3s ease-in-out infinite;
+            max-width: 200px;
+        }
+        @keyframes bloom {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="homepage">
+        <h1>Hi, Love! 🌸</h1>
+        <p>I have a little gift for you. Ready to begin?</p>
+        <button onclick="startQuestions()">Start the Gift</button>
+    </div>
+
+    <div class="container hidden" id="questions">
+        <h2>Answer a few questions!</h2>
+        <form id="quizForm">
+            <p>1. What is your favorite color?</p>
+            <input type="text" name="color" required>
+
+            <p>2. What is your dream vacation spot?</p>
+            <input type="text" name="vacation" required>
+
+            <p>3. What makes you the happiest?</p>
+            <input type="text" name="happiness" required>
+
+            <button type="submit">See Your Gift</button>
+        </form>
+    </div>
+
+    <div class="container hidden" id="flowerPage">
+        <h2>Here is your special flower! 🌹</h2>
+        <p>Thank you for answering the questions, my love! Here's a little gift just for you:</p>
+        <img class="flower" src="flower.gif" alt="Digital Flower">
+        <ul id="answersList"></ul>
+        <p>Always remember how much you mean to me. ❤️</p>
+    </div>
+
+    <script>
+        const homepage = document.getElementById('homepage');
+        const questions = document.getElementById('questions');
+        const flowerPage = document.getElementById('flowerPage');
+        const answersList = document.getElementById('answersList');
+
+        function startQuestions() {
+            homepage.classList.add('hidden');
+            questions.classList.remove('hidden');
+        }
+
+        document.getElementById('quizForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const formData = new FormData(event.target);
+            const answers = Array.from(formData.entries());
+
+            answers.forEach(([question, answer]) => {
+                const listItem = document.createElement('li');
+                listItem.textContent = `${question}: ${answer}`;
+                answersList.appendChild(listItem);
+            });
+
+            questions.classList.add('hidden');
+            flowerPage.classList.remove('hidden');
+        });
+    </script>
+</body>
+</html>
+<!-- partial -->
+  
+</body>
+</html>
